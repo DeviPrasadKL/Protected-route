@@ -7,7 +7,7 @@ export default function Protected(props) {
 
     useEffect(() => {
         const login = localStorage.getItem('login');
-        if (!login) {
+        if (login == "false") {
             navigate("/");
         }
     }, [])

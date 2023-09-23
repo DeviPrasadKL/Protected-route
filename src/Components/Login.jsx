@@ -27,6 +27,7 @@ export default function Login() {
             alert("Sorry! That's not a valid Input");
         } else {
             alert("Logged in successfully");
+            localStorage.setItem('login', true);
         }
     }
     return (
