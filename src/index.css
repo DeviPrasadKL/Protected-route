@@ -4,11 +4,6 @@
   align-items: center;
   flex-direction: column;
 }
-@media (max-width: 450px) {
-  .form{
-    width: none;
-  }
-}
 
 .outerContainer{
   width: 30rem;
@@ -139,4 +134,35 @@
 .formContent{
   position: relative;
   width: 100%;
+}
+
+/* Media Queries for mobile  */
+@media (max-width: 450px) {
+  .form {
+    width: none;
+  }
+
+  html {
+    font-size: 50%;
+  }
+
+  .ContentBox{
+    height: 51rem !important;
+  }
+
+  .form span{
+    font-size: 2rem;
+  }
+
+  .form--submit{
+    width: 75% !important;
+  }
+
+  .toggle-outer{
+    height: 3.5rem !important;
+  }
+
+  .outerContainer {
+    height: 55rem !important;
+  }
 }
