@@ -1,7 +1,9 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function Login() {
+    var baseURL = "http://localhost:8080";
     const [userInputData, setUserInputData] = useState({
         userName: "",
         password: "",
@@ -12,6 +14,14 @@ export default function Login() {
         const name = e.target.name;
         const value = e.target.value;
         setUserInputData({ ...userInputData, [name]: value });
+    }
+
+    const handleLogin = (url) => {
+        const {userName, password} = userInputData;
+        axios.post(url,{
+            data: {userName, password}
+        })
+        .then((res) => {console.log(res);})
     }
 
     const handleFormSubmit = (e) => {
@@ -26,6 +36,7 @@ export default function Login() {
         } else if (userInputData.userName.match(regex) || userInputData.password.match(regex)) {
             alert("Sorry! That's not a valid Input");
         } else {
+            handleLogin(`${baseURL}/signin`)
             alert("Logged in successfully");
             localStorage.setItem('login', true);
         }
