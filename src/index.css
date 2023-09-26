@@ -163,6 +163,7 @@
   }
 
   .outerContainer {
+    margin-top: 10rem;
     height: 55rem !important;
   }
 }

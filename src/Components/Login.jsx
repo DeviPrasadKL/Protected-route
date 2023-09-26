@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Flip, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { NavLink } from 'react-router-dom';
 
 export default function Login() {
@@ -7,6 +9,21 @@ export default function Login() {
     const [userInputData, setUserInputData] = useState({
         userName: "",
         password: "",
+    });
+
+    const notifySucccess = (msg) => toast.success(msg, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme: "colored",
+        toastId: "login"
+    });
+    const notifyWarn = (msg) => toast.warn(msg, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        toastId: "login"
+    });
+    const notifyError = (msg) => toast.error(msg, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme: "colored",
+        toastId: "login"
     });
 
     // This will handle all the input data and store it in an object
@@ -17,27 +34,29 @@ export default function Login() {
     }
 
     const handleLogin = (url) => {
-        const {userName, password} = userInputData;
-        axios.post(url,{
-            data: {userName, password}
-        })
-        .then((res) => {console.log(res);})
+        const { userName, password } = userInputData;
+        axios.post(url, { email: userName, password }
+        ).then((res) => { notifySucccess(res.data.message); }
+        ).catch((err) => { notifyError(err.response.data.message); })
     }
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
         var regex = "^(?:|[^a-zA-Z0-9]*)$";
         if (userInputData.userName == "" && userInputData.password == "") {
-            alert("Please Fill all the details before submitting");
+            notifyWarn("Please Fill all the details before submitting");
+            // alert("Please Fill all the details before submitting");
         } else if (userInputData.userName == "") {
-            alert("Please Fill user name before submitting");
+            notifyWarn("Please Fill user name before submitting");
+            // alert("Please Fill user name before submitting");
         } else if (userInputData.password == "") {
-            alert("Please Fill Psssword before submitting");
+            notifyWarn("Please Fill Psssword before submitting");
+            // alert("Please Fill Psssword before submitting");
         } else if (userInputData.userName.match(regex) || userInputData.password.match(regex)) {
-            alert("Sorry! That's not a valid Input");
+            notifyWarn("Sorry! That's not a valid Input");
+            // alert("Sorry! That's not a valid Input");
         } else {
-            handleLogin(`${baseURL}/signin`)
-            alert("Logged in successfully");
+            handleLogin(`${baseURL}/signin`);
             localStorage.setItem('login', true);
         }
     }
@@ -63,6 +82,9 @@ export default function Login() {
                     </button>
                 </div>
             </form>
+            <ToastContainer
+                transition={Flip}
+                autoClose={1000} />
         </div>
     );
 }
