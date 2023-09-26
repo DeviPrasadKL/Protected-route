@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { NavLink } from 'react-router-dom';
 
 export default function Login() {
     var baseURL = "http://localhost:8080";
@@ -10,6 +10,8 @@ export default function Login() {
         userName: "",
         password: "",
     });
+
+    const navigate = useNavigate();
 
     const notifySucccess = (msg) => toast.success(msg, {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -58,6 +60,9 @@ export default function Login() {
         } else {
             handleLogin(`${baseURL}/signin`);
             localStorage.setItem('login', true);
+            setTimeout(() => {
+                navigate("/home");
+            }, 2000);
         }
     }
     return (

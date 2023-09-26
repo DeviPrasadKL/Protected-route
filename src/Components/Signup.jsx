@@ -47,19 +47,6 @@ export default function Signup() {
                         Sign up
                     </button>
                 </div>
-
-                {/* <div className='buttons-div'>
-                    <NavLink to="/" style={{ width: "100%" }}>
-                        <button className="form--submit">
-                            Back
-                        </button>
-                    </NavLink>
-                    <NavLink to="/signup" style={{ width: "100%" }}>
-                        <button className="form--submit" onClick={handleSubmit}>
-                            Save & Verify
-                        </button>
-                    </NavLink>
-                </div> */}
             </form>
 
         </div>
