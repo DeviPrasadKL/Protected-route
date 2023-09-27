@@ -69,9 +69,20 @@
   color: grey;
 }
 
-.checkbox, input[type="checkbox"] {
-  accent-color: rgb(39, 145, 193);
+.form--marketing h4{
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
 }
+.form--marketing h4:active{
+  text-decoration: underline;
+  color: purple;
+  cursor: pointer;
+}
+
+/* .checkbox, input[type="checkbox"] {
+  accent-color: rgb(39, 145, 193);
+} */
 
 .form--submit {
   width: 50%;

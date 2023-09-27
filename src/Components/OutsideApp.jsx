@@ -22,7 +22,7 @@ export default function OutsideApp() {
                 </div>
                 <div className='ContentBox'>
                     <div className='formContent'>
-                        <Component />
+                        <Component setFlag={setFlag} />
                     </div>
                 </div>
             </div>

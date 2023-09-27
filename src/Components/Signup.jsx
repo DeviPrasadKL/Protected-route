@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 
-export default function Signup() {
+export default function Signup(props) {
     var baseURL = "http://localhost:8080";
     const [userInputData, setUserInputData] = useState({
         userName: "",
@@ -40,7 +40,12 @@ export default function Signup() {
         const { userName, email, phoneNumber, password, confirmPassword } = userInputData;
         const userData = { name: userName, email: email, phoneNumber: phoneNumber, password: password, confirmPassword: confirmPassword };
         axios.post(url, userData
-        ).then((res) => { notifySucccess(res.data.message); }
+        ).then((res) => {
+            notifySucccess(res.data.message);
+            setTimeout(() => {
+                props.setFlag(true);
+            }, 2000);
+        }
         ).catch((err) => { notifyError(err.response.data.message); })
     }
 
@@ -63,9 +68,7 @@ export default function Signup() {
         } else {
             handleSignUp(`${baseURL}/signup`);
             // alert("Sign up Successfully Completed");
-            setTimeout(() => {
-                navigate("/");
-            }, 2000);
+
         }
     }
     return (
