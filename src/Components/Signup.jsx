@@ -42,6 +42,7 @@ export default function Signup(props) {
         axios.post(url, userData
         ).then((res) => {
             notifySucccess(res.data.message);
+            localStorage.setItem('login', false);
             setTimeout(() => {
                 props.setFlag(true);
             }, 2000);

@@ -49,7 +49,13 @@ export default function Login() {
     const handleLogin = (url) => {
         const { email, password } = userInputData;
         axios.post(url, { email, password }
-        ).then((res) => { notifySucccess(res.data.message); }
+        ).then((res) => {
+            notifySucccess(res.data.message);
+            localStorage.setItem('login', true);
+            setTimeout(() => {
+                navigate("/home");
+            }, 2000);
+        }
         ).catch((err) => { notifyError(err.response.data.message); })
     }
 
@@ -70,12 +76,6 @@ export default function Login() {
             // alert("Sorry! That's not a valid Input");
         } else {
             handleLogin(`${baseURL}/signin`);
-            localStorage.setItem('login', false);
-            if (localStorage.getItem('login' == "true")) {
-                setTimeout(() => {
-                    navigate("/home");
-                }, 2000);
-            }
         }
     }
     return (
