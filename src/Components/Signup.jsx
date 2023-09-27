@@ -39,7 +39,6 @@ export default function Signup() {
     const handleSignUp = (url) => {
         const { userName, email, phoneNumber, password, confirmPassword } = userInputData;
         const userData = { name: userName, email: email, phoneNumber: phoneNumber, password: password, confirmPassword: confirmPassword };
-        console.log(userData);
         axios.post(url, userData
         ).then((res) => { notifySucccess(res.data.message); }
         ).catch((err) => { notifyError(err.response.data.message); })
@@ -50,16 +49,23 @@ export default function Signup() {
         // For Phone number check
         var regex = "^[0-9]+$";
         if (userInputData.userName == "" || userInputData.email == "" || userInputData.password == "" || userInputData.confirmPassword == "" || userInputData.phoneNumber == "") {
-            alert("Please Fill all the details before submitting");
+            // alert("Please Fill all the details before submitting");
+            notifyWarn("Please Fill all the details before submitting");
         } else if (userInputData.password != userInputData.confirmPassword) {
-            alert("Password does not match");
+            // alert("Password does not match");
+            notifyWarn("Password does not match");
         } else if (userInputData.phoneNumber.length != 10) {
-            alert("Phone Number must contain at least ten phone numbers");
+            // alert("Phone Number must contain at least ten phone numbers");
+            notifyWarn("Phone Number must contain at least ten phone numbers");
         } else if (!userInputData.phoneNumber.match(regex)) {
-            alert("Please enter a valid phone number");
+            // alert("Please enter a valid phone number");
+            notifyWarn("Please enter a valid phone number");
         } else {
             handleSignUp(`${baseURL}/signup`);
-            alert("Sign up Successfully Completed");
+            // alert("Sign up Successfully Completed");
+            setTimeout(() => {
+                navigate("/");
+            }, 2000);
         }
     }
     return (
