@@ -89,7 +89,8 @@ export default function Login() {
             </form>
             <ToastContainer
                 transition={Flip}
-                autoClose={1000} />
+                autoClose={1000}
+            />
         </div>
     );
 }
