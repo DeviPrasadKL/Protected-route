@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Flip, ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
@@ -37,9 +37,13 @@ export default function Login() {
 
     const forgetPassword = (url) => {
         const { email } = userInputData;
-        axios.post(url, { email }
-        ).then((res) => { notifySucccess(res.data.message); }
-        ).catch((err) => { notifyError(err.response.data.message); })
+        if (email == "") {
+            notifyWarn("Please enter email id");
+        } else {
+            axios.post(url, { email }
+            ).then((res) => { notifySucccess(res.data.message); }
+            ).catch((err) => { notifyError(err.response.data.message); })
+        }
     }
 
     const handleLogin = (url) => {
@@ -67,7 +71,7 @@ export default function Login() {
         } else {
             handleLogin(`${baseURL}/signin`);
             localStorage.setItem('login', false);
-            if(localStorage.getItem('login' == "true")){
+            if (localStorage.getItem('login' == "true")) {
                 setTimeout(() => {
                     navigate("/home");
                 }, 2000);
@@ -87,7 +91,7 @@ export default function Login() {
                             Remember me
                         </label>
                     </div> */}
-                    <h4 onClick={()=>{forgetPassword(`${baseURL}/forget-password`)}}>Forgot Password</h4>
+                    <h4 onClick={() => { forgetPassword(`${baseURL}/forget-password`) }}>Forgot Password</h4>
                 </div>
 
                 <div className='buttons-div'>
@@ -97,7 +101,6 @@ export default function Login() {
                 </div>
             </form>
             <ToastContainer
-                transition={Flip}
                 autoClose={1000}
             />
         </div>
