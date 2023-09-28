@@ -81,15 +81,8 @@ export default function Login() {
                 <input type="email" placeholder="Email" className="form--input" name="email" value={userInputData.email} onChange={handleInput} autoComplete="off" />
                 <input type="password" placeholder="Password" className="form--input" name="password" value={userInputData.password} onChange={handleInput} autoComplete="off" />
                 <div className="form--marketing">
-                    {/* <div style={{ marginRight: "15rem" }}>
-                        <input id="okayToEmail" type="checkbox" />
-                        <label htmlFor="okayToEmail" className="checkbox">
-                            Remember me
-                        </label>
-                    </div> */}
                     <h4 onClick={() => { forgetPassword(`${baseURL}/forget-password`) }}>Forgot Password</h4>
                 </div>
-
                 <div className='buttons-div'>
                     <button className="form--submit" onClick={handleFormSubmit}>
                         Login
