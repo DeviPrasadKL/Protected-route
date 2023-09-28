@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 
 export default function Signup(props) {
@@ -12,7 +11,6 @@ export default function Signup(props) {
         password: "",
         confirmPassword: ""
     });
-    const navigate = useNavigate();
 
     const notifySucccess = (msg) => toast.success(msg, {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -52,18 +50,19 @@ export default function Signup(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const { userName, email, phoneNumber, password, confirmPassword } = userInputData;
         // For Phone number check
         var regex = "^[0-9]+$";
-        if (userInputData.userName == "" || userInputData.email == "" || userInputData.password == "" || userInputData.confirmPassword == "" || userInputData.phoneNumber == "") {
+        if (userName == "" || email == "" || phoneNumber == "" || password == "" || confirmPassword == "") {
             // alert("Please Fill all the details before submitting");
             notifyWarn("Please Fill all the details before submitting");
-        } else if (userInputData.password != userInputData.confirmPassword) {
+        } else if (password != confirmPassword) {
             // alert("Password does not match");
             notifyWarn("Password does not match");
-        } else if (userInputData.phoneNumber.length != 10) {
+        } else if (phoneNumber.length != 10) {
             // alert("Phone Number must contain at least ten phone numbers");
             notifyWarn("Phone Number must contain at least ten phone numbers");
-        } else if (!userInputData.phoneNumber.match(regex)) {
+        } else if (!phoneNumber.match(regex)) {
             // alert("Please enter a valid phone number");
             notifyWarn("Please enter a valid phone number");
         } else {
