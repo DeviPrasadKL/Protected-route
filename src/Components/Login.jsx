@@ -64,16 +64,12 @@ export default function Login() {
         var regex = "^(?:|[^a-zA-Z0-9]*)$";
         if (userInputData.email == "" && userInputData.password == "") {
             notifyWarn("Please Fill all the details before submitting");
-            // alert("Please Fill all the details before submitting");
         } else if (userInputData.email == "") {
             notifyWarn("Please Fill user name before submitting");
-            // alert("Please Fill user name before submitting");
         } else if (userInputData.password == "") {
             notifyWarn("Please Fill Psssword before submitting");
-            // alert("Please Fill Psssword before submitting");
         } else if (userInputData.email.match(regex) || userInputData.password.match(regex)) {
             notifyWarn("Sorry! That's not a valid Input");
-            // alert("Sorry! That's not a valid Input");
         } else {
             handleLogin(`${baseURL}/signin`);
         }
