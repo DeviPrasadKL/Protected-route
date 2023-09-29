@@ -54,7 +54,6 @@ export default function Signup(props) {
         // For Phone number check
         var regex = "^[0-9]+$";
         if (userName == "" || email == "" || phoneNumber == "" || password == "" || confirmPassword == "") {
-            // alert("Please Fill all the details before submitting");
             notifyWarn("Please Fill all the details before submitting");
         } else if (password != confirmPassword) {
             // alert("Password does not match");
