@@ -56,7 +56,6 @@ export default function Signup(props) {
         if (userName == "" || email == "" || phoneNumber == "" || password == "" || confirmPassword == "") {
             notifyWarn("Please Fill all the details before submitting");
         } else if (password != confirmPassword) {
-            // alert("Password does not match");
             notifyWarn("Password does not match");
         } else if (phoneNumber.length != 10) {
             // alert("Phone Number must contain at least ten phone numbers");
