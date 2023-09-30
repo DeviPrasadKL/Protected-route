@@ -58,7 +58,6 @@ export default function Signup(props) {
         } else if (password != confirmPassword) {
             notifyWarn("Password does not match");
         } else if (phoneNumber.length != 10) {
-            // alert("Phone Number must contain at least ten phone numbers");
             notifyWarn("Phone Number must contain at least ten phone numbers");
         } else if (!phoneNumber.match(regex)) {
             // alert("Please enter a valid phone number");
