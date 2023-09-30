@@ -60,7 +60,6 @@ export default function Signup(props) {
         } else if (phoneNumber.length != 10) {
             notifyWarn("Phone Number must contain at least ten phone numbers");
         } else if (!phoneNumber.match(regex)) {
-            // alert("Please enter a valid phone number");
             notifyWarn("Please enter a valid phone number");
         } else {
             handleSignUp(`${baseURL}/signup`);
