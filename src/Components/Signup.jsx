@@ -63,7 +63,6 @@ export default function Signup(props) {
             notifyWarn("Please enter a valid phone number");
         } else {
             handleSignUp(`${baseURL}/signup`);
-            // alert("Sign up Successfully Completed");
 
         }
     }
