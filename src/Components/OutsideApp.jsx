@@ -10,6 +10,7 @@ export default function OutsideApp() {
     }
 
     let Component = flag ? Login : Signup;
+    
     return (
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div className='outerContainer'>
