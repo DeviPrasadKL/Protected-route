@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Flip, ToastContainer, toast } from 'react-toastify';
 
 export default function Signup(props) {
+    //Change the base URL
     var baseURL = "http://localhost:8080";
     const [userInputData, setUserInputData] = useState({
         userName: "",
